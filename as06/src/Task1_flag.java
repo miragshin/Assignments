@@ -2,7 +2,6 @@
 import acm.graphics.GOval;
 import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
-import acm.program.Program;
 
 import java.awt.*;
 
@@ -14,9 +13,9 @@ import java.awt.*;
 
 public class Task1_flag extends GraphicsProgram{
 	private static final long serialVersionUID = 1L;
-	private static final Color BLUE = new Color(0, 181, 226);
-	private static final Color RED = new Color(239, 51, 64);
-	private static final Color GREEN = new Color(80, 158, 47);
+	private static final Color AZ_BLUE = new Color(0, 181, 226);
+	private static final Color AZ_RED = new Color(239, 51, 64);
+	private static final Color AZ_GREEN = new Color(80, 158, 47);
 
 
 
@@ -26,6 +25,11 @@ public class Task1_flag extends GraphicsProgram{
 
 
 	public void run() {
+
+		// Less function calls
+		final double CANVAS_WIDTH = getWidth();
+		final double CANVAS_HEIGHT = getHeight();
+
 		GRect blueRect = new GRect(0, 0, getWidth(), getHeight() / 3);
 		GRect redRect = new GRect(0, getHeight() / 3, getWidth(), getHeight() / 3);
 		GRect greenRect = new GRect(0, getHeight() / 1.5, getWidth(), getHeight() / 3);
@@ -37,10 +41,10 @@ public class Task1_flag extends GraphicsProgram{
 		);
 
 		GOval innerMoon = new GOval(
-				outerMoon.getX(),
-				outerMoon.getY(),
+				outerMoon.getX() + 20,
+				outerMoon.getY() + 10,
 				outerMoon.getWidth(),
-				outerMoon.getHeight()
+				outerMoon.getHeight() - 20
 		);
 
 		blueRect.setFilled(true);
@@ -48,15 +52,19 @@ public class Task1_flag extends GraphicsProgram{
 		greenRect.setFilled(true);
 		outerMoon.setFilled(true);
 		innerMoon.setFilled(true);
-		blueRect.setFillColor(BLUE);
-		redRect.setFillColor(RED);
-		greenRect.setFillColor(GREEN);
+
+		blueRect.setFillColor(AZ_BLUE);
+		redRect.setFillColor(AZ_RED);
+		greenRect.setFillColor(AZ_GREEN);
 		outerMoon.setFillColor(Color.WHITE);
-		innerMoon.setFillColor(RED);
-		blueRect.setColor(BLUE);
-		redRect.setColor(RED);
-		blueRect.setColor(BLUE);
-		innerMoon.setColor(RED);
+		innerMoon.setFillColor(AZ_RED);
+
+		blueRect.setColor(AZ_BLUE);
+		redRect.setColor(AZ_RED);
+		blueRect.setColor(AZ_BLUE);
+		innerMoon.setColor(AZ_RED);
+		outerMoon.setColor(AZ_RED);
+
 		add(blueRect);
 		add(redRect);
 		add(greenRect);
