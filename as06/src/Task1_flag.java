@@ -25,20 +25,8 @@ public class Task1_flag extends GraphicsProgram {
 		GRect blueRect = new GRect(0, 0, WIDTH, HEIGHT);
 		GRect redRect = new GRect(0, HEIGHT, WIDTH, HEIGHT);
 		GRect greenRect = new GRect(0, HEIGHT * 2, WIDTH, HEIGHT);
-		GOval outerMoon = new GOval(
-				(WIDTH - WIDTH / 3) / 2,
-				(HEIGHT * 3 - HEIGHT) / 2,
-				HEIGHT,
-				HEIGHT
-		);
-
-		GOval innerMoon = new GOval(
-				outerMoon.getX() + 20,
-				outerMoon.getY() + 10,
-				outerMoon.getWidth(),
-				outerMoon.getHeight() - 20
-		);
-
+		GOval outerMoon = new GOval(HEIGHT * 0.95, HEIGHT * 0.95);
+		GOval innerMoon = new GOval(HEIGHT * 0.8, HEIGHT * 0.8);
 		GRect pseudoStar = new GRect(0, 0, HEIGHT / 2, HEIGHT / 2);
 
 		// Set the objects filled
@@ -50,20 +38,29 @@ public class Task1_flag extends GraphicsProgram {
 		pseudoStar.setFilled(true);
 
 		// Fill the objects with colors
-		blueRect.setFillColor(AZ_BLUE);
-		redRect.setFillColor(AZ_RED);
-		greenRect.setFillColor(AZ_GREEN);
 		outerMoon.setFillColor(Color.WHITE);
-		innerMoon.setFillColor(AZ_RED);
-		pseudoStar.setFillColor(Color.WHITE);
 
 		// Remove borders
 		blueRect.setColor(AZ_BLUE);
 		redRect.setColor(AZ_RED);
 		blueRect.setColor(AZ_BLUE);
+		greenRect.setColor(AZ_GREEN);
 		innerMoon.setColor(AZ_RED);
 		outerMoon.setColor(AZ_RED);
 		pseudoStar.setColor(AZ_RED);
+
+		outerMoon.setLocation(
+				(WIDTH / 2) - (outerMoon.getWidth() / 2),
+				((HEIGHT * 3) / 2) - (outerMoon.getHeight() / 2)
+		);
+		innerMoon.setLocation(
+				(WIDTH / 2) - (innerMoon.getWidth() / 2),
+				((HEIGHT * 3) / 2) - (innerMoon.getHeight() / 2)
+		);
+		innerMoon.move(
+				((outerMoon.getHeight() - innerMoon.getHeight()) / 2),
+				0
+		);
 
 		// Add to screen
 		add(blueRect);
@@ -71,11 +68,17 @@ public class Task1_flag extends GraphicsProgram {
 		add(greenRect);
 		add(outerMoon);
 		add(innerMoon);
-		add(
-				pseudoStar,
-				(WIDTH / 2) - (pseudoStar.getWidth() / 2),
-				((HEIGHT * 3) / 2) - (pseudoStar.getHeight() / 2)
-		);
+//		add(
+//				outerMoon,
+//				(WIDTH / 2) - (outerMoon.getWidth() / 2),
+//				((HEIGHT * 3) / 2) - (outerMoon.getHeight() / 2)
+//		);
+
+//		add(
+//				innerMoon,
+//				(WIDTH / 2) - (innerMoon.getWidth() / 2),
+//				((HEIGHT * 3) / 2) - (innerMoon.getHeight() / 2)
+//		);
 	}
 
 	public static void main(String[] args) {
