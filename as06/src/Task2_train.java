@@ -11,11 +11,46 @@ import java.awt.*;
 
 public class Task2_train extends GraphicsProgram {
 	private static final long serialVersionUID = 1L;
-	
-	// NUM_OF_BOXCARS
+
+	private static final int NUM_OF_BOXCARS = 6;
 
 	public void run() {
-		// You fill in here
+
+		// Coordinates
+		double x = 50;
+		double y = 50;
+		GRect[] car = new GRect[NUM_OF_BOXCARS];
+		GLine[] connector = new GLine[(NUM_OF_BOXCARS - 1) * 2];
+		GRect[] window = new GRect[NUM_OF_BOXCARS];
+
+		// Add stuff
+		for (int i = 0; i < NUM_OF_BOXCARS; i++) {
+
+			// Cars
+			car[i] = new GRect(CAR_WIDTH, CAR_HEIGHT);
+			car[i].setFilled(true);
+			car[i].setColor(Color.MAGENTA);
+			add(car[i]);
+			car[i].setLocation(x, y);
+			x = x + car[i].getWidth() + CONNECTOR;
+
+			// Connector
+			connector[i] = new GLine(
+					x + CAR_WIDTH,
+					y + CAR_HEIGHT,
+					x + CAR_WIDTH + CONNECTOR,
+					y + CAR_HEIGHT
+			);
+			add(connector[i]);
+
+			// Windows
+			window[i] = new GRect(DOOR_WIDTH, DOOR_HEIGHT);
+			add(
+					window[i],
+					(car[i].getX() +((car[i].getWidth() - DOOR_WIDTH) / 4)),
+					car[i].getY() + (car[i].getHeight() - DOOR_HEIGHT)
+			);
+		}
 	}
 
 
@@ -59,3 +94,8 @@ public class Task2_train extends GraphicsProgram {
 	private static final double CUPOLA_HEIGHT = 8;
 
 }
+
+
+
+
+
