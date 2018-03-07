@@ -15,8 +15,7 @@ public class Task3_clock extends GraphicsProgram {
 
 
 	public void run() {
-		// You fill in here
-		
+
 		
 	}
 
