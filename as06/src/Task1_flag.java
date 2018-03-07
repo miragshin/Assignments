@@ -27,7 +27,7 @@ public class Task1_flag extends GraphicsProgram {
 		GRect greenRect = new GRect(0, HEIGHT * 2, WIDTH, HEIGHT);
 		GOval outerMoon = new GOval(HEIGHT * 0.95, HEIGHT * 0.95);
 		GOval innerMoon = new GOval(HEIGHT * 0.8, HEIGHT * 0.8);
-		GRect pseudoStar = new GRect(0, 0, HEIGHT / 2, HEIGHT / 2);
+		GRect pseudoStar = new GRect(HEIGHT / 4, HEIGHT / 4);
 
 		// Set the objects filled
 		blueRect.setFilled(true);
@@ -47,7 +47,7 @@ public class Task1_flag extends GraphicsProgram {
 		greenRect.setColor(AZ_GREEN);
 		innerMoon.setColor(AZ_RED);
 		outerMoon.setColor(AZ_RED);
-		pseudoStar.setColor(AZ_RED);
+		pseudoStar.setColor(Color.WHITE);
 
 		outerMoon.setLocation(
 				(WIDTH / 2) - (outerMoon.getWidth() / 2),
@@ -61,6 +61,11 @@ public class Task1_flag extends GraphicsProgram {
 				((outerMoon.getHeight() - innerMoon.getHeight()) / 2),
 				0
 		);
+		pseudoStar.setLocation(
+				(WIDTH / 2) - (pseudoStar.getWidth() / 2),
+				((HEIGHT * 3) / 2) - (pseudoStar.getHeight() / 2)
+		);
+		pseudoStar.move(outerMoon.getWidth() / 2, 0);
 
 		// Add to screen
 		add(blueRect);
@@ -68,17 +73,7 @@ public class Task1_flag extends GraphicsProgram {
 		add(greenRect);
 		add(outerMoon);
 		add(innerMoon);
-//		add(
-//				outerMoon,
-//				(WIDTH / 2) - (outerMoon.getWidth() / 2),
-//				((HEIGHT * 3) / 2) - (outerMoon.getHeight() / 2)
-//		);
-
-//		add(
-//				innerMoon,
-//				(WIDTH / 2) - (innerMoon.getWidth() / 2),
-//				((HEIGHT * 3) / 2) - (innerMoon.getHeight() / 2)
-//		);
+		add(pseudoStar);
 	}
 
 	public static void main(String[] args) {
