@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class GSM {
 
 	/* GSM parameters */
@@ -5,9 +8,9 @@ public class GSM {
 	private String manufacturer;
 	private double price;
 	private String owner;
-	private Battery battery;
-	private Display display;
-
+	private Battery battery = new Battery();
+	private Display display = new Display();
+	private Calls calls = new Calls();
 
 	/* Static example class instance */
 	static GSM IPhone4S = new GSM("iPhone 4S", "Apple Inc.", 139.95, "Someone Random");
@@ -21,6 +24,23 @@ public class GSM {
 			16000000
 	);
 
+	public void add(Calls call) {
+		this.calls.add(call);
+	}
+
+	public void add(int startSecond, int startMinute, int startHour,
+						int endSecond, int endMinute, int endHour) {
+		this.calls.add(new Calls(startSecond, startMinute, startHour,
+				endSecond, endMinute, endHour));
+	}
+
+	public void clear() {
+		this.calls.clear();
+	}
+
+	public void remove(Calls call) {
+		this.calls.remove(call);
+	}
 
 	/* GSM getter an setters */
 	public String getModel() {
@@ -45,6 +65,14 @@ public class GSM {
 
 	public Display getDisplay() {
 		return this.display;
+	}
+
+	public ArrayList<Calls> getCallsArrayList() {
+		return this.calls.getCallHistory();
+	}
+
+	public Calls getCall() {
+		return this.calls;
 	}
 
 	public void setModel(String model) {
@@ -114,13 +142,16 @@ public class GSM {
 		this.manufacturer = manufacturer;
 		this.price = price;
 	}
+
+	public GSM(String model, String manufacturer, double price) {
+		this.model = model;
+		this.manufacturer = manufacturer;
+		this.price = price;
+	}
+
+	public GSM(String mdoel, String manufacturer, String owner) {
+		this.model = model;
+		this.manufacturer = manufacturer;
+		this.owner = owner;
+	}
 }
-
-
-
-
-
-
-
-
-

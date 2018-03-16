@@ -28,6 +28,7 @@ public class Battery {
 		this.talkHours = battery.talkHours;
 	}
 
+	public Battery() {}
 	/* Battery getter and setters */
 	public String getModel() {
 		return this.model;

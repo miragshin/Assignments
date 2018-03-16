@@ -31,4 +31,6 @@ public class Display {
 		this.size = display.size;
 		this.colorAmount = display.colorAmount;
 	}
+
+	public Display() {}
 }
