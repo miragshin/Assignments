@@ -4,6 +4,8 @@
 .claspath
 .project
 .iml
+*/.classpath
+*/.iml
 
 
 # Compiled class file
