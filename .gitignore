@@ -4,6 +4,7 @@
 .claspath
 .project
 .iml
+lib/
 */.classpath
 */*.iml
 
