@@ -23,7 +23,6 @@ public class RoundTriangle extends GCompound {
 	}
 
 	public void run() {
-		RoundTriangle t = new RoundTriangle(500);
-		add(t);    // Change it to center later
+		add(new RoundTriangle(500));    // Change it to center later
 	}
 }

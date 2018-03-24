@@ -15,25 +15,31 @@ be ignored.)
 
  */
 
+
 public class GClock extends GraphicsProgram {
 	private static final long serialVersionUID = 1L;
 	private static final double RATIO = 0.95; // Determines thickness of the circle
-	public static LocalDateTime date = LocalDateTime.now();
-	public static long hour = date.getHour();
-	public static long minute = date.getMinute();
-	public static long second = date.getSecond();
-	static long milliseconds = hour * 60 * 60 + minute * 60 + second;
+	private LocalDateTime date = LocalDateTime.now();
+	private long hour;
+	private long minute;
+	private long second;
+	private long milliseconds;
 
 
 	/* Optional constructor for user-entered time */
-	public GClock(long second, long minute, long hour) {
-		this.second = second;
-		this.minute = minute;
+	public GClock(long hour, long minute) {
+		if (hour > 12) hour = hour - 12;
 		this.hour = hour;
+		this.minute = minute;
 	}
 
 	/* Constructor with no arguments */
-	public GClock() {}
+	public GClock() {
+		this.hour = date.getHour();
+		this.minute = date.getMinute();
+		this.second = date.getSecond();
+		this.milliseconds = hour * 60 * 60 + minute * 60 + second;
+	}
 
 	public void run() {
 
@@ -56,7 +62,7 @@ public class GClock extends GraphicsProgram {
 		GLine minuteHand = new GLine(x, y, x, y2 * 1.6);
 		GLine hourHand = new GLine(x, y, (x - (y2 - y + 50)), y);
 		secondHand.setColor(Color.BLACK);
-		minuteHand.setColor(Color.GREEN);
+		minuteHand.setColor(Color.BLUE);
 		hourHand.setColor(Color.RED);
 
 		outer.setFilled(true);
@@ -87,7 +93,7 @@ public class GClock extends GraphicsProgram {
 			String str = Integer.toString(i);
 			GLabel time = new GLabel(str);
 
-			time.setColor(Color.black);
+			time.setColor(Color.BLACK);
 			time.setFont("Georgia-bold-32");
 
 			double dx = Math.cos((i * 30) * Math.PI / 180);
@@ -103,11 +109,11 @@ public class GClock extends GraphicsProgram {
 			double dx = Math.cos((i * 6) * Math.PI / 180);
 			double dy = Math.sin((i * 6) * Math.PI / 180);
 
-			double dx1 = Math.cos((i * 1 / 10) * Math.PI / 180);
-			double dy1 = Math.sin((i * 1 / 10) * Math.PI / 180);
+			double dx1 = Math.cos((i / 10) * Math.PI / 180);
+			double dy1 = Math.sin((i / 10) * Math.PI / 180);
 
-			double dx2 = Math.cos((i * 1 / 120) * Math.PI / 180);
-			double dy2 = Math.sin((i * 1 / 120) * Math.PI / 180);
+			double dx2 = Math.cos((i / 120) * Math.PI / 180);
+			double dy2 = Math.sin((i / 120) * Math.PI / 180);
 
 			secondHand.setEndPoint(outer.getWidth() / 2 + dy * 175, outer.getHeight() / 2 - dx * 175);
 			minuteHand.setEndPoint(outer.getWidth() / 2 + dy1 * 175, outer.getHeight() / 2 - dx1 * 175);
@@ -119,9 +125,9 @@ public class GClock extends GraphicsProgram {
 
 	public static void main(String[] args) {
 		new GClock().start();
+
 	}
 }
-
 
 
 
