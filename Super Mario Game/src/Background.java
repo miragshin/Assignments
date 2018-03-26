@@ -8,8 +8,8 @@ public class Background extends GCompound {
 	private static final int AMOUNT_OF_SQUARES = 50;
 	private static final int GROUND_SQUARE_WIDTH = 32;
 	private static final double GROUND_SQUARE_RATIO = 0.75;
-	private double WIDTH;
-	private double HEIGHT;
+	private static double WIDTH;
+	private static double HEIGHT;
 
 	public Background(double WIDTH, double HEIGHT) {
 		this.WIDTH = WIDTH;
@@ -22,5 +22,10 @@ public class Background extends GCompound {
 					HEIGHT * GROUND_SQUARE_RATIO)
 			);
 		}
+	}
+
+
+	public static double getStartY() {
+		return HEIGHT * GROUND_SQUARE_RATIO;
 	}
 }
