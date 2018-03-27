@@ -1,26 +1,38 @@
 import acm.graphics.*;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
+
 import acm.program.*;
 
 public class Main extends GraphicsProgram {
 
 	private static Background background;
-	private static Mario character;
+	public static Mario character;
 	private static double WIDTH;
 	private static double HEIGHT;
 	private final static double SPEED = 10;
+	private final static double GRAVITY = 0.5;
+	private static double characterX;
+	private static boolean isJumping = false;
 
 	public void run() {
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
-		setBackground(Color.BLUE);
+		setBackground(new Color(84, 208, 249));
 		background = new Background(WIDTH, HEIGHT);
 		character = new Mario();
 		add(background);
 		add(character, 0, Background.getStartY() - character.getHeight());
-		while(!isGameOver()) {
-//			new Runtime.start();
+		while (true) {
+			characterX = character.getX();
+			System.out.println(characterX);
+			if (!isIsOnGround()) {
+				fallDown();
+			}
+			if(isJumping) {
+//				jump();
+			}
 		}
 	}
 
@@ -47,7 +59,7 @@ public class Main extends GraphicsProgram {
 					break;
 				case KeyEvent.VK_UP:
 					character.jump();
-
+					break;
 			}
 		}
 	}
@@ -61,12 +73,36 @@ public class Main extends GraphicsProgram {
 				case KeyEvent.VK_LEFT:
 					character.standStill();
 					break;
+				case KeyEvent.VK_UP:
+					character.standStill();
+					break;
 			}
 		}
 	}
 
-	private static void jumpForward() {
-		
+	private void jumpForward() {
+		for (int i = 0; i < 60; i++) {
+			character.move(0, -1);
+		}
+	}
+
+	private void fallForward() {
+		for (int i = 0; i < 60; i++) {
+			character.move(0, 1);
+		}
+	}
+
+	private void fallDown() {
+		double dy = 0;
+		while (character.getY() < WIDTH) {
+			dy += GRAVITY;
+			character.move(0.1, dy);
+			pause(15);
+		}
+	}
+
+	private boolean isIsOnGround() {
+		return ((characterX < Background.AMOUNT_OF_SQUARES * Background.GROUND_SQUARE_WIDTH));
 	}
 
 	public static Mario getCharacter() {

@@ -20,7 +20,7 @@ public class Mario extends GCompound {
 
 	public void standStill() {
 		remove(character);
-		if (character.equals(MadokaRunForward)) {
+		if (character.equals(MadokaRunForward) || character.equals(MadokaStandStillForward) || character.equals(MadokaJumpForward)) {
 			character = MadokaStandStillForward;
 		} else {
 			character = MadokaStandStillBackward;
@@ -49,5 +49,9 @@ public class Mario extends GCompound {
 			character = MadokaJumpBackward;
 		}
 		add(character);
+	}
+
+	public void setImage() {
+		character.setImage("Images/Marios/Madoka/MadokaRunForward.gif");
 	}
 }
