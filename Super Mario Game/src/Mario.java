@@ -18,6 +18,10 @@ public class Mario extends GCompound {
 		add(character);
 	}
 
+	public Mario(Character character) {
+
+	}
+
 	public void standStill() {
 		remove(character);
 		if (character.equals(MadokaRunForward) || character.equals(MadokaStandStillForward) || character.equals(MadokaJumpForward)) {
