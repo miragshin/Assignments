@@ -7,13 +7,13 @@ import Actions.*;
 
 public class Madoka {
 	public static String name = "Kaname Madoka";
-	public static GImage MadokaOnscreen = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaStandStillForward.gif");
-	public static GImage MadokaStandStillForward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaStandStillForward.gif");
-	public static GImage MadokaStandStillBackward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaStandStillBackward.gif");
-	public static GImage MadokaRunForward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaRunForward.gif");
-	public static GImage MadokaRunBackward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaRunBackward.gif");
-	public static GImage MadokaJumpForward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaJumpForward.gif");
-	public static GImage MadokaJumpBackward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaJumpBackward.gif");
+	public static GImage MadokaOnscreen = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
+	public static GImage MadokaStandStillForward = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
+	public static GImage MadokaStandStillBackward = new GImage("Images/Marios/Madoka/MadokaStandStillBackward.gif");
+	public static GImage MadokaRunForward = new GImage("Images/Marios/Madoka/MadokaRunForward.gif");
+	public static GImage MadokaRunBackward = new GImage("Images/Marios/Madoka/MadokaRunBackward.gif");
+	public static GImage MadokaJumpForward = new GImage("Images/Marios/MadokaJumpForward.gif");
+	public static GImage MadokaJumpBackward = new GImage("Images/Marios/Madoka/MadokaJumpBackward.gif");
 
 	public Running running;
 	public Jumping jumping;
