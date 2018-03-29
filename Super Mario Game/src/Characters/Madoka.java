@@ -1,15 +1,13 @@
 package Characters;
 
+import Builders.Character;
 import acm.graphics.*;
-
-import java.awt.*;
-
-import acm.program.*;
 
 import Actions.*;
 
 public class Madoka {
 	public static String name = "Kaname Madoka";
+	public static GImage MadokaOnscreen = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaStandStillForward.gif");
 	public static GImage MadokaStandStillForward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaStandStillForward.gif");
 	public static GImage MadokaStandStillBackward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaStandStillBackward.gif");
 	public static GImage MadokaRunForward = new GImage("C:\\Users\\cavid\\Documents\\Assignments\\Super Mario Game\\src\\Characters\\Images\\MadokaRunForward.gif");
@@ -21,12 +19,14 @@ public class Madoka {
 	public Jumping jumping;
 	public Still still;
 	public State state;
+	public GImage onscreen;
 
 	public Madoka() {
 		running = new Running();
 		jumping = new Jumping();
 		still = new Still();
 		state = new State();
+		this.onscreen = MadokaOnscreen;
 		this.still.state.forward = MadokaStandStillForward;
 		this.still.state.backward = MadokaStandStillBackward;
 		this.running.state.forward = MadokaRunForward;
@@ -34,6 +34,21 @@ public class Madoka {
 		this.jumping.state.forward = MadokaJumpForward;
 		this.jumping.state.backward = MadokaJumpBackward;
 	}
+
+	public Builders.Character init(Builders.Character character) {
+		character.setCurrent(MadokaStandStillForward);
+		character.still.state.forward = MadokaStandStillForward;
+		character.still.state.backward = MadokaStandStillBackward;
+		character.running.state.forward = MadokaRunForward;
+		character.running.state.backward = MadokaRunBackward;
+		character.jumping.state.forward = MadokaJumpForward;
+		character.jumping.state.backward = MadokaJumpBackward;
+		return character;
+	}
+
+
+
+
 
 //	public static void run() {
 //		running = new Running();

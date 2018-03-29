@@ -7,6 +7,7 @@
 lib/
 */.classpath
 */*.iml
+!acm.jar
 
 
 # Compiled class file

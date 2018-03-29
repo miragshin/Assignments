@@ -1,8 +1,5 @@
+import Builders.Character;
 import acm.graphics.*;
-
-import java.awt.*;
-
-import acm.program.*;
 
 public class Mario extends GCompound {
 	private static GImage character;
