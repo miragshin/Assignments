@@ -5,15 +5,15 @@ import acm.graphics.*;
 
 import Actions.*;
 
-public class Madoka {
+public class Madoka extends Character {
 	public static String name = "Kaname Madoka";
-	public static GImage MadokaOnscreen = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
-	public static GImage MadokaStandStillForward = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
-	public static GImage MadokaStandStillBackward = new GImage("Images/Marios/Madoka/MadokaStandStillBackward.gif");
-	public static GImage MadokaRunForward = new GImage("Images/Marios/Madoka/MadokaRunForward.gif");
-	public static GImage MadokaRunBackward = new GImage("Images/Marios/Madoka/MadokaRunBackward.gif");
-	public static GImage MadokaJumpForward = new GImage("Images/Marios/MadokaJumpForward.gif");
-	public static GImage MadokaJumpBackward = new GImage("Images/Marios/Madoka/MadokaJumpBackward.gif");
+	public static GImage Onscreen = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
+	public static GImage StandStillForward = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
+	public static GImage StandStillBackward = new GImage("Images/Marios/Madoka/MadokaStandStillBackward.gif");
+	public static GImage RunForward = new GImage("Images/Marios/Madoka/MadokaRunForward.gif");
+	public static GImage RunBackward = new GImage("Images/Marios/Madoka/MadokaRunBackward.gif");
+	public static GImage JumpForward = new GImage("Images/Marios/Madoka/MadokaJumpForward.gif");
+	public static GImage JumpBackward = new GImage("Images/Marios/Madoka/MadokaJumpBackward.gif");
 
 	public Running running;
 	public Jumping jumping;
@@ -26,40 +26,23 @@ public class Madoka {
 		jumping = new Jumping();
 		still = new Still();
 		state = new State();
-		this.onscreen = MadokaOnscreen;
-		this.still.state.forward = MadokaStandStillForward;
-		this.still.state.backward = MadokaStandStillBackward;
-		this.running.state.forward = MadokaRunForward;
-		this.running.state.backward = MadokaRunBackward;
-		this.jumping.state.forward = MadokaJumpForward;
-		this.jumping.state.backward = MadokaJumpBackward;
+		this.onscreen = Onscreen;
+		this.still.state.forward = StandStillForward;
+		this.still.state.backward = StandStillBackward;
+		this.running.state.forward = RunForward;
+		this.running.state.backward = RunBackward;
+		this.jumping.state.forward = JumpForward;
+		this.jumping.state.backward = JumpBackward;
 	}
 
-	public Builders.Character init(Builders.Character character) {
-		character.setCurrent(MadokaStandStillForward);
-		character.still.state.forward = MadokaStandStillForward;
-		character.still.state.backward = MadokaStandStillBackward;
-		character.running.state.forward = MadokaRunForward;
-		character.running.state.backward = MadokaRunBackward;
-		character.jumping.state.forward = MadokaJumpForward;
-		character.jumping.state.backward = MadokaJumpBackward;
+	public static Builders.Character initiate(Builders.Character character) {
+		character.setCurrent(StandStillForward);
+		character.still.state.forward = StandStillForward;
+		character.still.state.backward = StandStillBackward;
+		character.running.state.forward = RunForward;
+		character.running.state.backward = RunBackward;
+		character.jumping.state.forward = JumpForward;
+		character.jumping.state.backward = JumpBackward;
 		return character;
 	}
-
-
-
-
-
-//	public static void run() {
-//		running = new Running();
-//		jumping = new Jumping();
-//		still = new Still();
-//		state = new State();
-//		Madoka.still.state.forward = MadokaStandStillForward;
-//		Madoka.still.state.backward = MadokaStandStillBackward;
-//		Madoka.running.state.forward = MadokaRunForward;
-//		Madoka.running.state.backward = MadokaRunBackward;
-//		Madoka.jumping.state.forward = MadokaJumpForward;
-//		Madoka.jumping.state.backward = MadokaJumpBackward;
-//	}
 }

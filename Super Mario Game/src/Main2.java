@@ -1,6 +1,5 @@
 import Builders.Character;
 import Characters.Madoka;
-import Characters.Mami;
 import acm.program.GraphicsProgram;
 
 import java.awt.*;
@@ -13,11 +12,14 @@ public class Main2 extends GraphicsProgram {
 	private static double HEIGHT;
 	private static double SPEED = 5;
 	private final static double GRAVITY = 0.5;
-	private static double characterX;
+	private static double characterInitialY;
 	private static boolean isJumping = false;
 	private static boolean RIGHT_KEY_PRESSED = false;
 	private static boolean LEFT_KEY_PRESSED = false;
 	private static boolean UP_KEY_PRESSED = false;
+	private static boolean IS_FAllING = false;
+	private static boolean IS_ON_GROUND = true;
+	private static boolean IS_ON_AIR = false;
 	private static double dy = 0;
 
 
@@ -28,11 +30,18 @@ public class Main2 extends GraphicsProgram {
 		setBackground(new Color(84, 208, 249));
 		add(new Background(WIDTH, HEIGHT));
 
+		GroundChecker groundChecker = new GroundChecker();
+		Thread t1 = new Thread(groundChecker);
+		t1.start();
+
 		character = new Character();
 
-//		character = new Character(new Madoka().init(character));
-		character = new Character(new Mami().init(character));
+
+		character = new Character(Madoka.initiate(character));
+//		character = new Character(new Mami().initiate(character));
 		add(character, 0, Background.getStartY() - character.getHeight());
+
+		characterInitialY = character.getY();
 
 		while (true) {
 			System.out.println("Hi");
@@ -44,14 +53,22 @@ public class Main2 extends GraphicsProgram {
 				move(-SPEED);
 				pause(10);
 			}
-			if (!isIsOnGround()) {
-				dy += GRAVITY;
-				character.move(1, dy);
-				pause(15);
-			}
+//			if (!isIsOnGround()) {
+//				dy += GRAVITY;
+//				character.move(1, dy);
+//				pause(10);
+//			}
 			if (UP_KEY_PRESSED) {
-				jumpForward();
+//				jumpForward();
+				character.move(0, -10);
+				pause(10);
 			}
+
+//			if (!isIsOnGround()) {
+//				character.move(0, 10);
+//				pause(10);
+//			}
+
 		}
 	}
 
@@ -76,7 +93,9 @@ public class Main2 extends GraphicsProgram {
 					LEFT_KEY_PRESSED = true;
 					break;
 				case KeyEvent.VK_UP:
+					character.jumpForward();
 					UP_KEY_PRESSED = true;
+					IS_ON_AIR = true;
 					break;
 			}
 		}
@@ -106,11 +125,12 @@ public class Main2 extends GraphicsProgram {
 		for (int i = 0; i < 60; i++) {
 			dx += GRAVITY;
 			character.move(0, -1);
-			pause(1);
+			pause(10);
 		}
 		fallDown();
 	}
-//
+
+	//
 //	private void fallForward() {
 //		for (int i = 0; i < 60; i++) {
 //			character.move(0, 1);
@@ -127,7 +147,12 @@ public class Main2 extends GraphicsProgram {
 	}
 
 	private boolean isIsOnGround() {
-		return ((character.getX() < Background.AMOUNT_OF_SQUARES * Background.GROUND_SQUARE_WIDTH));
+//		return ((character.getY() < Background.AMOUNT_OF_SQUARES * Background.GROUND_SQUARE_WIDTH));
+		return (character.getY() == characterInitialY);
+	}
+
+	public static void setIsOnGround(boolean isOnGround) {
+		IS_ON_GROUND = isOnGround;
 	}
 
 	public static void main(String[] args) {

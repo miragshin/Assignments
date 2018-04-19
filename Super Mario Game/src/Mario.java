@@ -3,7 +3,7 @@ import acm.graphics.*;
 
 public class Mario extends GCompound {
 	private static GImage character;
-	private GImage MadokaStandStillForward = new GImage("Images/Marios/Madoka/MadokaStandStillForward.gif");
+	private GImage MadokaStandStillForward = new GImage("Images/Marios/Madoka/StandStillForward.gif");
 	private GImage MadokaStandStillBackward = new GImage("Images/Marios/Madoka/MadokaStandStillBackward.gif");
 	private GImage MadokaRunForward = new GImage("Images/Marios/Madoka/MadokaRunForward.gif");
 	private GImage MadokaRunBackward = new GImage("Images/Marios/Madoka/MadokaRunBackward.gif");
